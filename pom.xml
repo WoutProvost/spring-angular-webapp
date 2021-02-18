@@ -6,8 +6,8 @@
 	<artifactId>horeca</artifactId>
 	<version>1.0</version>
 
-	<name>horeca</name>
-	<description>Horeca demo project</description>
+	<name>spring-angular-webapp</name>
+	<description>A small example web application using a Spring Boot backend and an Angular frontend.</description>
 
 	<properties>
 		<java.version>11</java.version>

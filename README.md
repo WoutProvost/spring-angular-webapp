@@ -1,4 +1,4 @@
-# horeca
+# spring-angular-webapp
 A small example web application using a [Spring Boot](https://spring.io/projects/spring-boot) backend and an [Angular](https://angular.io/) frontend.
 
 ### Dependencies
@@ -8,11 +8,11 @@ sudo apt install maven
 
 ### Sources
 ```bash
-git clone https://github.com/WoutProvost/horeca
+git clone https://github.com/WoutProvost/spring-angular-webapp
 ```
 
 ### Building and running
 ```bash
-cd horeca
+cd spring-angular-webapp
 mvn spring-boot:run
 ```
