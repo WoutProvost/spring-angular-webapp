@@ -3,6 +3,8 @@ package com.example.horeca.controllers;
 import com.example.horeca.domain.Horeca;
 import com.example.horeca.services.HorecaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,11 +16,11 @@ public class HorecaController {
 	@Autowired
 	private HorecaService service;
 
-	// Get all establishments
+	// Get all establishments, with support for pagination
 	// curl -s -X GET "localhost:8080/" -H "Accept: application/json"
 	@GetMapping("/")
-	public Iterable<Horeca> getAll() {
-		return service.getAll();
+	public Page<Horeca> getAll(Pageable pageable) {
+		return service.getAll(pageable);
 	}
 
 	// Add a score between 1 and 5 to an establishment identified by id

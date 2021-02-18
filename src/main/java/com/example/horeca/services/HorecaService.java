@@ -4,6 +4,8 @@ import com.example.horeca.domain.Horeca;
 import com.example.horeca.persistence.HorecaRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +18,8 @@ public class HorecaService {
         repository.save(horeca);
     }
 
-	public Iterable<Horeca> getAll() {
-		return repository.findAll();
+	public Page<Horeca> getAll(Pageable pageable) {
+		return repository.findAll(pageable);
 	}
 
 	public void addScore(long id, byte score) {
