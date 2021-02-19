@@ -1,0 +1,39 @@
+<h1>Horeca</h1>
+
+<button [disabled]="isFirstPage" (click)="previousPage()">&lt;&lt; Previous page</button>
+<span>Page {{currentPage}} of {{totalPages}}</span>
+<button [disabled]="isLastPage" (click)="nextPage()">Next page &gt;&gt;</button>
+<form (ngSubmit)="changeSize(size.value)">
+	<label for="size">Page size:</label>
+	<input #size type="number" name="size" min="{{MIN_SIZE}}" max="{{totalElements}}" value="{{pageSize}}">
+	<input type="submit" value="Change">
+</form>
+
+<form #form="ngForm" (ngSubmit)="filter(form)">
+	<label for="search">Filter:</label>
+	<input type="text" name="search" ngModel>
+	<input type="submit" value="Filter">
+	<br/>
+	<span>Field:</span>
+	<input type="radio" name="field" value="naam" ngModel>
+	<label for="naam">Naam</label>
+	<input type="radio" name="field" value="branche" ngModel>
+	<label for="branche">Branche</label>
+	<input type="radio" name="field" value="winkelgebied" ngModel>
+	<label for="winkelgebied">Winkelgebied</label>
+</form>
+
+<google-map width="220px" height="220px" [center]="{lat:51.2093,lng:3.2247}" [zoom]="14">
+	<map-marker *ngFor="let h of horecas" [position]="{lat:h.json_geometry.coordinates[1],lng:h.json_geometry.coordinates[0]}">
+	</map-marker>
+</google-map>
+
+<div *ngFor="let h of horecas">
+	<h1>{{h.Naam}}</h1>
+	<pre>{{h | json}}</pre>
+	<form (ngSubmit)="addScore(h.id, score.value)">
+		<label for="score">Add score:</label>
+		<input #score type="number" name="score" min="{{MIN_SCORE}}" max="{{MAX_SCORE}}" value="{{START_SCORE}}">
+		<input type="submit" value="Score">
+	</form>
+</div>
