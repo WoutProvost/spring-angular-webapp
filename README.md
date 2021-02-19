@@ -22,3 +22,4 @@ cd angular
 npm install
 ng serve --open
 ```
+The Spring Boot API is available at http://localhost:8080/list and the Angular application at http://localhost:4200.
