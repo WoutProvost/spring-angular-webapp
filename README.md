@@ -3,7 +3,8 @@ A small example web application using a [Spring Boot](https://spring.io/projects
 
 ### Dependencies
 ```bash
-sudo apt install default-jre default-jdk maven
+sudo apt install default-jre default-jdk maven nodejs npm
+sudo npm install -g @angular/cli
 ```
 
 ### Sources
@@ -14,5 +15,10 @@ git clone https://github.com/WoutProvost/spring-angular-webapp
 ### Building and running
 ```bash
 cd spring-angular-webapp
+cd spring
 mvn spring-boot:run
+
+cd angular
+npm install
+ng serve --open
 ```
