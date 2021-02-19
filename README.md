@@ -3,7 +3,7 @@ A small example web application using a [Spring Boot](https://spring.io/projects
 
 ### Dependencies
 ```bash
-sudo apt install maven
+sudo apt install default-jre default-jdk maven
 ```
 
 ### Sources

@@ -22,5 +22,5 @@ public class Score {
 
 	public void setScore(byte score) {
 		this.score = score;
-	}	
+	}
 }
