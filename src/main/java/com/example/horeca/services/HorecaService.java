@@ -18,7 +18,19 @@ public class HorecaService {
         repository.save(horeca);
     }
 
-	public Page<Horeca> getAll(Pageable pageable) {
+	public Page<Horeca> list(String search, String field, Pageable pageable) {
+		switch(field) {
+			case "naam": {
+				return repository.findByNaamContainingIgnoreCase(search, pageable);
+			}
+			case "branche": {
+				return repository.findByBrancheContainingIgnoreCase(search, pageable);
+			}
+			case "winkelgebied": {
+				return repository.findByWinkelgebiedContainingIgnoreCase(search, pageable);
+			}
+		}
+
 		return repository.findAll(pageable);
 	}
 

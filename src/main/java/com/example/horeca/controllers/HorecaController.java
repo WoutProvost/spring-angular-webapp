@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,11 +19,16 @@ public class HorecaController {
 	@Autowired
 	private HorecaService service;
 
-	// Get all establishments, with support for pagination
-	// curl -s -X GET "localhost:8080/" -H "Accept: application/json"
-	@GetMapping("/")
-	public Page<Horeca> getAll(Pageable pageable) {
-		return service.getAll(pageable);
+	// Get all establishments with filtering support for certain fields, with support for pagination
+	// curl -s -X GET "localhost:8080/list" -H "Accept: application/json"
+	// curl -s -X GET "localhost:8080/list?search=Smedenstraat&field=winkelgebied" -H "Accept: application/json"
+	@GetMapping("/list")
+	public Page<Horeca> list(
+		@RequestParam(value = "search", defaultValue = "") String search,
+		@RequestParam(value = "field", defaultValue = "") String field,
+		Pageable pageable) {
+
+		return service.list(search, field, pageable);
 	}
 
 	// Add a score between 1 and 5 to an establishment identified by id
